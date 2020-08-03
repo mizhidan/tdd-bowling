@@ -24,4 +24,14 @@ public class BowlingGameTest {
         assertEquals(67, score1);
         assertEquals(76, score2);
     }
+
+    @Test
+    void should_calc_correct_score_when_only_have_strike() {
+        List<Integer> bowlingHits1 = Arrays.asList(1,2,3,4,5,4,10,4,5,3,6,10,5,2,2,4,3,4);
+        List<Integer> bowlingHits2 = Arrays.asList(1,2,3,4,5,4,10,4,5,3,6,10,5,2,10,10,4,5);
+        int score1 = bowlingGame.calcScore(bowlingHits1);
+        int score2 = bowlingGame.calcScore(bowlingHits2);
+        assertEquals(93, score1);
+        assertEquals(123, score2);
+    }
 }

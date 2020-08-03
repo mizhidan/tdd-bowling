@@ -8,11 +8,24 @@ public class BowlingGame {
         int prevScore = 0;
         int roundScore = 0;
         int extraScoreTime = 0;
-        int round = 0;
-        boolean isTenthRound = false;
+        int round = 1;
         for (Integer integer : bowlingHits) {
+            if (integer == 10 && round != 10) {
+                score += integer;
+                ++round;
+                extraScoreTime += 2;
+                continue;
+            } else if (integer == 10 && round == 10) {
+                if (extraScoreTime > 0) {
+                    score += integer * 2;
+                    --extraScoreTime;
+                } else {
+                    score += integer;
+                }
+                continue;
+            }
             score += integer;
-            if (extraScoreTime > 0 && round != 10) {
+            if (extraScoreTime > 0 && round != 11) {
                 score += integer;
                 --extraScoreTime;
             }
